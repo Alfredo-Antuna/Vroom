@@ -10,15 +10,13 @@ namespace Test
         [Fact]
         public void ShouldCreate()
         {
-            var test = new Guid();
-            Car TestCar = new Car() { Model = ModelEnum.Nissan, Nickname = "Tow-mater", Year = 2020, IsAvailable = true, TopSpeed = 220, Type = TypeEnum.Truck };
-            TestCar.Id.Should().Be(test);
-            TestCar.Model.Should().Be(ModelEnum.Nissan);
-            TestCar.Nickname.Should().Be("Tow-mater");
-            TestCar.Year.Should().Be(2020);
-            TestCar.IsAvailable.Should().Be(true);
-            TestCar.TopSpeed.Should().Be(220);
-            TestCar.Type.Should().Be(TypeEnum.Truck);
+            CarDto TestCarDto = new CarDto() { Model = ModelEnum.Nissan, Nickname = "Tow-mater", Year = 2020, IsAvailable = true, TopSpeed = 220, Type = TypeEnum.Truck };
+            TestCarDto.Model.Should().Be(ModelEnum.Nissan);
+            TestCarDto.Nickname.Should().Be("Tow-mater");
+            TestCarDto.Year.Should().Be(2020);
+            TestCarDto.IsAvailable.Should().Be(true);
+            TestCarDto.TopSpeed.Should().Be(220);
+            TestCarDto.Type.Should().Be(TypeEnum.Truck);
         }
     }
 }
