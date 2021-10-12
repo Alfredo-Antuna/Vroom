@@ -12,10 +12,9 @@ namespace Test
         [Fact]
         public void ShouldCreate()
         {
-            var test = new Guid();
             var DOB = new DateTime(1999, 1, 1);
-            Driver TestDriver = new Driver() { Id = test, Age = 19, FirstName = "Tow", LastName = "Mater", Nickname = "Tow-mater", DateOfBirth = DOB, Wins = 1, Losses = 20 };
-            TestDriver.Id.Should().Be(test);
+            DriverDto TestDriverDto = new DriverDto() { Age = 19, FirstName = "Tow", LastName = "Mater", Nickname = "Tow-mater", DateOfBirth = DOB, Wins = 1, Losses = 20 };
+            Driver TestDriver = new Driver(TestDriverDto);
             TestDriver.Age.Should().Be(19);
             TestDriver.FirstName.Should().Be("Tow");
             TestDriver.LastName.Should().Be("Mater");
