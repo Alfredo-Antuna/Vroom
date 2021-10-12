@@ -8,7 +8,6 @@ namespace Test
     public class DriverTest
     {
 
-
         [Fact]
         public void ShouldCreate()
         {
@@ -22,8 +21,6 @@ namespace Test
             TestDriver.Nickname.Should().Be("Tow-mater");
             TestDriver.Wins.Should().Be(1);
             TestDriver.Losses.Should().Be(20);
-
-
 
         }
     }

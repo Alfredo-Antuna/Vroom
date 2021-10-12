@@ -6,8 +6,6 @@ using Web;
 namespace Test
 {
 
-
-
     public class CarTest
     {
 

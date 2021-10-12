@@ -10,11 +10,15 @@ namespace Web
         //add Car
         Task AddCarAsync(CarDto carDto);
         //add Driver
+        Task AddDriverAsync(DriverDto DriverDto);
         //add Race
+        Task AddRaceAsync(RaceDto raceDto);
         //get Cars
+        Task<IEnumerable<Car>> GetAllCarsAsync();
         //get Drivers
+        Task<IEnumerable<Driver>> GetAllDriversAsync();
         //get Races
-
-
+        Task<IEnumerable<Race>> GetAllRacesAsync();
+        Task <Car> GetCarAsync (Guid carId);
     }
 }
