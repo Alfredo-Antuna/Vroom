@@ -14,15 +14,16 @@ namespace Web.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.11");
 
             modelBuilder.Entity("DriverRace", b =>
                 {
-                    b.Property<Guid>("ParticipantsId")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("ParticipantsId")
+                        .HasColumnType("varbinary(16)");
 
-                    b.Property<Guid>("RacesId")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("RacesId")
+                        .HasColumnType("varbinary(16)");
 
                     b.HasKey("ParticipantsId", "RacesId");
 
@@ -33,30 +34,30 @@ namespace Web.Migrations
 
             modelBuilder.Entity("Web.Car", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<byte[]>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varbinary(16)");
 
-                    b.Property<Guid?>("DriverId")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("DriverId")
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<bool>("IsAvailable")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("Model")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nickname")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<int>("TopSpeed")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("Type")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("Year")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -67,30 +68,30 @@ namespace Web.Migrations
 
             modelBuilder.Entity("Web.Driver", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<byte[]>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<int>("Age")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<int>("Losses")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nickname")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<int>("Wins")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -99,24 +100,25 @@ namespace Web.Migrations
 
             modelBuilder.Entity("Web.Race", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<byte[]>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<int>("BestTime")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("Category")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
-                    b.Property<Guid>("Winner")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("Winner")
+                        .IsRequired()
+                        .HasColumnType("varbinary(16)");
 
                     b.HasKey("Id");
 

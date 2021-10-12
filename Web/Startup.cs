@@ -27,7 +27,8 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Database>(options => options.UseSqlite(Configuration.GetConnectionString("Default")));
+            services.AddDbContextPool<Database>(options => options.UseMySQL(Configuration.GetConnectionString("MysqlConnection")));
+            // services.AddDbContext<Database>(options => options.UseSqlite(Configuration.GetConnectionString("Default")));
             //services.AddScoped<IRepository, TodoRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
