@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Lib
+namespace Web
 {
     public class Car
     {
@@ -12,7 +12,7 @@ namespace Lib
         public ModelEnum Model {get;set;}
         public string Nickname {get;set;}
         public int Year {get;set;}
-        public bool Status {get;set;} //enum?
+        public bool IsAvailable {get;set;}
         public int TopSpeed {get;set;}
         public TypeEnum Type {get;set;}
     }   
