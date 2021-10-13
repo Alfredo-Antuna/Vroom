@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 
 
@@ -10,7 +9,5 @@ namespace Web
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<Race> Races { get; set; }
         public Database(DbContextOptions<Database> options) : base(options) { }
-
-
     }
 }

@@ -26,7 +26,7 @@ namespace Web
             await _db.AddAsync(car);
 
         }
-        public async Task <Car> GetCarAsync(Guid carId)
+        public async Task <Car> GetCar (Guid carId)
         {
           var car = await _db.Cars.Where(car => car.Id == carId).FirstOrDefaultAsync();
             return car;

@@ -9,7 +9,6 @@ namespace Test
 {
     public class RaceDtoTest
     {
-
         [Fact]
         public void ShouldNotCreateFutureRace()
         {

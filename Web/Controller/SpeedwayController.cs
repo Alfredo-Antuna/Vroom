@@ -18,18 +18,17 @@ namespace Web
         [HttpPost("cars")]
         public async Task<IActionResult> AddCar(CarDto carDto)
         {
-            //Car car = new Car(carDto);
+           // Car car = new Car(carDto);
             await _repository.AddCarAsync(carDto);
             await _repository.SaveAsync();
-            //return CreatedAtAction("GetCar", new { car.Id }, car);\
             return Ok();
-
+           // return CreatedAtAction("GetCar", new { car.Id }, car);
         }
         [HttpGet("{car}")]
-        public async Task<IActionResult> GetCar(Guid id)
+        public async Task<IActionResult> GetCar(Guid car)
         {
-            var car = await _repository.GetCarAsync(id);
-            return Ok(car);
+            var car2 = await _repository.GetCar(car);
+            return Ok(car2);
         }
 
         [HttpGet("cars")]

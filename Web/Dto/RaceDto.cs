@@ -22,8 +22,6 @@ namespace Web
         public List<Guid> ParticipantsIds { get; set; }
     }
 
-
-
     public class CustomDateAttribute : RangeAttribute
     {
         public CustomDateAttribute()

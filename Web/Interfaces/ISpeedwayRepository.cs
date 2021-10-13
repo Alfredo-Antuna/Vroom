@@ -19,6 +19,7 @@ namespace Web
         Task<IEnumerable<Driver>> GetAllDriversAsync();
         //get Races
         Task<IEnumerable<Race>> GetAllRacesAsync();
-        Task <Car> GetCarAsync (Guid carId);
+        //get one Car
+        Task <Car> GetCar (Guid carId);
     }
 }

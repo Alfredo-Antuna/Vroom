@@ -5,10 +5,8 @@ using Web;
 
 namespace Test
 {
-
     public class CarTest
     {
-
         [Fact]
         public void ShouldCreate()
         {
@@ -21,8 +19,6 @@ namespace Test
             TestCar.IsAvailable.Should().Be(true);
             TestCar.TopSpeed.Should().Be(220);
             TestCar.Type.Should().Be(TypeEnum.Truck);
-
-
         }
     }
 }
