@@ -20,22 +20,25 @@ namespace Web
             return await _db.Cars.ToListAsync();
         }
 
-        public async Task AddCarAsync(CarDto carDto)
+        public async Task AddCarAsync(Car car)
         {
-            Car car = new Car(carDto);
             await _db.AddAsync(car);
-
         }
-        public async Task <Car> GetCar (Guid carId)
+        public async Task<Car> GetCar(Guid carId)
         {
-          var car = await _db.Cars.Where(car => car.Id == carId).FirstOrDefaultAsync();
+            var car = await _db.Cars.Where(car => car.Id == carId).FirstOrDefaultAsync();
             return car;
 
         }
-        public async Task AddDriverAsync(DriverDto driverDto)
+        public async Task AddDriverAsync(Driver driver)
         {
-            Driver driver = new Driver(driverDto);
             await _db.AddAsync(driver);
+
+        }
+          public async Task<Driver> GetDriver(Guid driverId)
+        {
+            var driver = await _db.Drivers.Where(driver => driver.Id == driverId).FirstOrDefaultAsync();
+            return driver;
 
         }
         public async Task AddRaceAsync(RaceDto raceDto)

@@ -8,9 +8,9 @@ namespace Web
     {
         Task SaveAsync();
         //add Car
-        Task AddCarAsync(CarDto carDto);
+        Task AddCarAsync(Car car);
         //add Driver
-        Task AddDriverAsync(DriverDto DriverDto);
+        Task AddDriverAsync(Driver driver);
         //add Race
         Task AddRaceAsync(RaceDto raceDto);
         //get Cars
@@ -20,6 +20,7 @@ namespace Web
         //get Races
         Task<IEnumerable<Race>> GetAllRacesAsync();
         //get one Car
-        Task <Car> GetCar (Guid carId);
+        Task<Car> GetCar(Guid carId);
+        Task<Driver> GetDriver(Guid DriverId);
     }
 }
