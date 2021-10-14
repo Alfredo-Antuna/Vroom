@@ -21,7 +21,6 @@ namespace Web
             Car car = new Car(carDto);
             await _repository.AddCarAsync(car);
             await _repository.SaveAsync();
-            //return Ok();
             return CreatedAtAction("GetCar", new { CarId = car.Id }, car);
         }
         [HttpGet("cars/{CarId}")]
@@ -44,7 +43,6 @@ namespace Web
             Driver driver = new Driver(driverDto);
             await _repository.AddDriverAsync(driver);
             await _repository.SaveAsync();
-            //return Ok();
             return CreatedAtAction("GetDriver", new { DriverId = driver.Id }, driver);
         }
 
@@ -60,6 +58,31 @@ namespace Web
         {
             var drivers = await _repository.GetAllDriversAsync();
             return Ok(drivers);
+        }
+
+        [HttpPost("races")]
+        public async Task<IActionResult> AddRace(RaceDto raceDto)
+        {
+            List<Guid> DriverList = raceDto.ParticipantsIds;
+            var drivers = await _repository.GetDriversAsync(DriverList);
+            Race race = new Race(raceDto, drivers.ToList());
+            await _repository.AddRaceAsync(race);
+            await _repository.SaveAsync();
+            return CreatedAtAction("GetRace", new { raceId = race.Id }, race);
+        }
+
+        [HttpGet("races/{raceId}")]
+        public async Task<IActionResult> GetRace(Guid RaceId)
+        {
+            var race = await _repository.GetRace(RaceId);
+            if (race is null) return NotFound();
+            return Ok(race);
+        }
+        [HttpGet("races")]
+        public async Task<IActionResult> GetAllRaces()
+        {
+            var races = await _repository.GetAllRacesAsync();
+            return Ok(races);
         }
     }
 }

@@ -33,29 +33,36 @@ namespace Web
         public async Task AddDriverAsync(Driver driver)
         {
             await _db.AddAsync(driver);
-
         }
-          public async Task<Driver> GetDriver(Guid driverId)
+        public async Task<Driver> GetDriver(Guid driverId)
         {
             var driver = await _db.Drivers.Where(driver => driver.Id == driverId).FirstOrDefaultAsync();
             return driver;
 
         }
-        public async Task AddRaceAsync(RaceDto raceDto)
+        public async Task<IEnumerable<Driver>> GetDriversAsync(List<Guid> driverIds)
         {
-            List<Driver> participants = new ();
-            Driver checkDriver;
-
-            foreach (Guid part in raceDto.ParticipantsIds)
+            List<Driver> drivers = new List<Driver>();
+            Driver checkDriver= new Driver();
+            foreach (Guid driverId in driverIds)
             {
-                checkDriver = await _db.Drivers.Where(driver => driver.Id == part).FirstOrDefaultAsync();
-                if (checkDriver != null) { participants.Add(checkDriver); }
-                else { throw new Exception(); }
+                checkDriver = await _db.Drivers.Where(driver => driver.Id == driverId).FirstOrDefaultAsync();
+                if (checkDriver != null) { drivers.Add(checkDriver); }
+
             }
+            return drivers;
+        }
 
-            Race race = new Race(raceDto, participants);
+        public async Task<Race> GetRace(Guid raceId)
+        {
+            var race = await _db.Races.Where(race => race.Id == raceId).FirstOrDefaultAsync();
+            return race;
+
+        }
+
+        public async Task AddRaceAsync(Race race)
+        {
             await _db.AddAsync(race);
-
         }
         public async Task<IEnumerable<Car>> GetAllCarsAsync()
         {
