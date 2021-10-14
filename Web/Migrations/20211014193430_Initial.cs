@@ -11,14 +11,14 @@ namespace Web.Migrations
                 name: "Drivers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true),
-                    Age = table.Column<int>(type: "INTEGER", nullable: false),
-                    Nickname = table.Column<string>(type: "TEXT", nullable: true),
-                    DateOfBirth = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Wins = table.Column<int>(type: "INTEGER", nullable: false),
-                    Losses = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    LastName = table.Column<string>(type: "text", nullable: true),
+                    Age = table.Column<int>(type: "integer", nullable: false),
+                    Nickname = table.Column<string>(type: "text", nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Wins = table.Column<int>(type: "integer", nullable: false),
+                    Losses = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,12 +29,12 @@ namespace Web.Migrations
                 name: "Races",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Category = table.Column<int>(type: "INTEGER", nullable: false),
-                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    BestTime = table.Column<int>(type: "INTEGER", nullable: false),
-                    Winner = table.Column<Guid>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Category = table.Column<int>(type: "integer", nullable: false),
+                    Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    BestTime = table.Column<int>(type: "integer", nullable: false),
+                    Winner = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,14 +45,14 @@ namespace Web.Migrations
                 name: "Cars",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Model = table.Column<int>(type: "INTEGER", nullable: false),
-                    Nickname = table.Column<string>(type: "TEXT", nullable: true),
-                    Year = table.Column<int>(type: "INTEGER", nullable: false),
-                    IsAvailable = table.Column<bool>(type: "INTEGER", nullable: false),
-                    TopSpeed = table.Column<int>(type: "INTEGER", nullable: false),
-                    Type = table.Column<int>(type: "INTEGER", nullable: false),
-                    DriverId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Model = table.Column<int>(type: "integer", nullable: false),
+                    Nickname = table.Column<string>(type: "text", nullable: true),
+                    Year = table.Column<int>(type: "integer", nullable: false),
+                    IsAvailable = table.Column<bool>(type: "boolean", nullable: false),
+                    TopSpeed = table.Column<int>(type: "integer", nullable: false),
+                    Type = table.Column<int>(type: "integer", nullable: false),
+                    DriverId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,8 +69,8 @@ namespace Web.Migrations
                 name: "DriverRace",
                 columns: table => new
                 {
-                    ParticipantsId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    RacesId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    ParticipantsId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RacesId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {

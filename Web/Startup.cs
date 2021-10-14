@@ -27,9 +27,9 @@ namespace Web
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddDbContextPool<Database>(options => options.UseMySQL(Configuration.GetConnectionString("MysqlConnection")));
-            services.AddDbContext<Database>(options => options.UseSqlite(Configuration.GetConnectionString("Default")));
-            // var connectionString = Environment.GetEnvironmentVariable("PG_CONN_STRING");
-            // services.AddDbContext<Database>(options => options.UseNpgsql(connectionString));
+            //services.AddDbContext<Database>(options => options.UseSqlite(Configuration.GetConnectionString("Default")));
+            var connectionString = Environment.GetEnvironmentVariable("PG_CONN_STRING");
+            services.AddDbContext<Database>(options => options.UseNpgsql(connectionString));
             services.AddScoped<ISpeedwayRepository, SpeedwayRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
