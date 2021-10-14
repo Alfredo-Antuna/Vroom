@@ -35,7 +35,7 @@ namespace test
       var createdActionResult = result as CreatedAtActionResult;
       createdActionResult.StatusCode.Should().Be(201);
       createdActionResult.ActionName.Should().Be("GetCar");
-      createdActionResult.RouteValues["Id"].Should().NotBeNull();
+      createdActionResult.RouteValues["CarId"].Should().NotBeNull();
     }
     
     }

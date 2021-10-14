@@ -17,7 +17,9 @@ namespace Web
         [JsonIgnore]
         public List<Driver> Participants { get; set; } = new();
 
-        public Race() { }
+        public Race() { 
+            Id = new Guid();
+        }
 
         public Race(RaceDto raceDto, List<Driver> participants)
         {

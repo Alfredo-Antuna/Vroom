@@ -12,7 +12,9 @@ namespace Web
         public int TopSpeed { get; set; }
         public TypeEnum Type { get; set; }
 
-        public Car() { }
+        public Car() { 
+            Id= new Guid();
+        }
         public Car(CarDto carDto)
         {
             Id = new Guid();

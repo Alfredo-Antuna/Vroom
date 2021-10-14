@@ -54,9 +54,10 @@ namespace test.Repositories
             DriverDto testDriverDto = new DriverDto() { Age = 19, FirstName = "Tow", LastName = "Mater", Nickname = "Tow-mater", DateOfBirth = DOB, Wins = 1, Losses = 20 };
             Driver driver = new Driver(testDriverDto);
             await _repo.AddDriverAsync(driver);
-            List<Guid> ParticipantIds = await _db.Drivers.Select(driver => driver.Id).ToListAsync();
-            RaceDto TestRaceDto = new RaceDto() { Name = "Tow", Category = CategoryEnum.Drag, Date = raceDate, Winner = winner, ParticipantsIds = ParticipantIds };
-            await _repo.AddRaceAsync(TestRaceDto);
+            List<Driver> Participants = await _db.Drivers.ToListAsync();
+            //RaceDto TestRaceDto = new RaceDto() { Name = "Tow", Category = CategoryEnum.Drag, Date = raceDate, Winner = winner, ParticipantsIds = Participants };
+            Race testRace =new Race() { Name = "Tow", Category = CategoryEnum.Drag, Date = raceDate, Winner = winner };
+            await _repo.AddRaceAsync(testRace);
             await _repo.SaveAsync();
             _db.Races.Count().Should().Be(1);
         }
@@ -94,15 +95,14 @@ namespace test.Repositories
             var winner = new Guid();
             var raceDate = new DateTime(1999, 1, 1);
             List<Guid> ParticipantIds = await _db.Drivers.Select(driver => driver.Id).ToListAsync();
-            List <Driver> drivers = new List<Driver>{ Age = 19, FirstName = "Tow", LastName = "Mater", Nickname = "Tow-mater", DateOfBirth = DOB, Wins = 1, Losses = 20 };
-            RaceDto TestRaceDto = new RaceDto() { Name = "Tow", Category = CategoryEnum.Drag, Date = raceDate, Winner = winner, ParticipantsIds = ParticipantIds };
-           Race race = new Race(TestRaceDto, drivers);
+            //RaceDto TestRaceDto = new RaceDto() { Name = "Tow", Category = CategoryEnum.Drag, Date = raceDate, Winner = winner, ParticipantsIds = ParticipantIds };
+           Race race = new Race(){ Name = "Tow", Category = CategoryEnum.Drag, Date = raceDate, Winner = winner};
             await _repo.AddRaceAsync(race);
             var winner2 = new Guid();
             var raceDate2 = new DateTime(1999, 1, 1);
             List<Guid> ParticipantIds2 = await _db.Drivers.Select(driver => driver.Id).ToListAsync();
-            RaceDto TestRaceDto2 = new RaceDto() { Name = "Tow", Category = CategoryEnum.Drag, Date = raceDate2, Winner = winner2, ParticipantsIds = ParticipantIds2 };
-            Race race2 = new Race(TestRaceDto, drivers);
+          // RaceDto TestRaceDto2 = new RaceDto() { Name = "Tow", Category = CategoryEnum.Drag, Date = raceDate2, Winner = winner2, ParticipantsIds = ParticipantIds2 };
+            Race race2 = new Race(){ Name = "Tow", Category = CategoryEnum.Drag, Date = raceDate2, Winner = winner2 };
             await _repo.AddRaceAsync(race2);
             await _repo.SaveAsync();
             var todos = await _repo.GetAllRacesAsync();
